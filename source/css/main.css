@@ -92,7 +92,7 @@ body {
 
 .blog-header {
   width: 100%;
-  max-width: 640px;
+  max-width: 700px;
   margin: 0 auto;
   position: relative;
   padding: 0;
@@ -149,7 +149,7 @@ body {
 
 .content {
   width: 100%;
-  max-width: 640px;
+  max-width: 700px;
   margin: 0 auto;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -244,7 +244,7 @@ body {
   margin: 0 auto;
   padding: 48px 0;
   width: 100%;
-  max-width: 640px;
+  max-width: 700px;
   font-size: 12px;
   text-align: center;
   color: #999999;
@@ -419,14 +419,13 @@ body {
     z-index: 300;
     text-align: center; }
   .post .post-content code {
-    background-color: #333333;
-    color: white;
+    background-color: #DDD;
+    color: rgb(102, 102, 102);
     border-color: #333333;
     font-family: Inconsolata, monospace, sans-serif;
     border-radius: 8px;
-    padding: 2px 4px 4px;
+    padding: 0px 4px 2px;
     position: relative;
-    top: -3px;
     white-space: nowrap;
     -webkit-hyphens: none;
     -moz-hyphens: none;
@@ -597,7 +596,7 @@ body {
     width: 100%;
     position: relative;
     z-index: 99;
-    max-width: 640px;
+    max-width: 700px;
     padding: 120px 0 90px;
     text-align: center;
     margin: 0 auto; }
@@ -641,3 +640,16 @@ body {
       border-radius: 999em;
       line-height: 44px;
       padding: 0 18px; }
+
+.post .post-content figure.highlight {
+    padding: 5px 8px;
+    background: #ddd;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.post .post-content pre {
+    padding: 0;
+    margin: 0;
+}
