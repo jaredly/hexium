@@ -10,21 +10,26 @@ module.exports = {
     }
     return moment(date).format(options.hash.format)
   },
+
   asset: function (name) {
     return hexo.config.root + name
   },
+
   encode: function (item) {
     return new Handlebars.SafeString(encodeURIComponent(item))
   },
+
   excerpt: function () {
     return new Handlebars.SafeString(this.excerpt)
   },
+
   url: function (options) {
     if (options.hash.absolute) {
       return this.url
     }
     return this.path
   },
+
   tags: function (tags, options) {
     if (arguments.length === 1) {
       options = tags
@@ -36,6 +41,7 @@ module.exports = {
       return '<a href="' + hexo.config.root + tag.path + '">' + tag.name + '</a>'
     }).join(options.separator || ' '))
   },
+
   foreach: function (context, options) {
     var ret = ''
     context.each(function (item) {
@@ -53,15 +59,16 @@ module.exports = {
     }).join('')
     */
   },
+
   debug: function(optionalValue) {
     console.log("Current Context");
     console.log("====================");
     console.log(this);
   
     if (optionalValue) {
-if ('function' === typeof optionalValue) {
-  optionalValue = optionalValue()
-}
+      if ('function' === typeof optionalValue) {
+        optionalValue = optionalValue()
+      }
       console.log("Value");
       console.log("====================");
       console.log(optionalValue);

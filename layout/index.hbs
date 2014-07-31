@@ -41,33 +41,33 @@
 <script>
     (function ($) {
         "use strict";
-    
+
         $(document).ready(function(){
-    
+
             var $window = $(window),
                 $image = $('.teaserimage-image');
             $window.on('scroll', function() {
                 var top = $window.scrollTop();
-    
+
                 if (top < 0 || top > 1500) { return; }
                 $image
                     .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
                     .css('opacity', 1-Math.max(top/700, 0));
             });
             $window.trigger('scroll');
-    
+
         });
-    
+
     }(jQuery));
 </script>
 
 {{! The main content area on the homepage }}
 <main class="content" role="main">
-    
+
     <h5 class="index-headline featured"><span>Featured</span></h5>
-    
+
     <div class="container featured">
-        {{#each page.posts}}
+        {{#foreach page.posts}}
             {{#if featured}}
                 <article class="{{post_class}}" itemscope itemtype="http://schema.org/BlogPosting" role="article">
                     <div class="article-item">
@@ -81,12 +81,11 @@
                     </div>
                 </article>
             {{/if}}
-        {{/each}}
+        {{/foreach}}
     </div>
-    
-    
+
     <h5 class="index-headline normal"><span>Latest</span></h5>
-    
+
     <div class="cf frame">
     {{#foreach page.posts}}
         {{#if featured}}

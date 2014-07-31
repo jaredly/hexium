@@ -7,8 +7,7 @@
 
     <article class="post {{post_class}}">
 
-        {{! Everything inside the #post tags pulls data from the post }}
-
+        {{debug page}}
         {{#if page.articleImage}}
 
         <div class="article-image">
@@ -29,56 +28,7 @@
             </div>
         </div>
 
-        <script>
-            (function ($) {
-                "use strict";
-
-                $(document).ready(function(){
-
-                    $('.post-content').each(function() {
-                        var $this = $(this),
-                            img = $this.find('img:first'),
-                            url = img.attr('src');
-
-                        $(".post-image-image").css('background-image', 'url('+url+')');
-
-                        img.remove();
-                    });
-
-                    var $window = $(window),
-                        $image = $('.post-image-image');
-                    $window.on('scroll', function() {
-                        var top = $window.scrollTop();
-
-                        if (top < 0 || top > 1500) { return; }
-                        $image
-                            .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
-                            .css('opacity', 1-Math.max(top/700, 0));
-                    });
-                    $window.trigger('scroll');
-
-                    var height = $('.article-image').height();
-                        $('.post-content').css('padding-top', height + 'px');
-
-                    $(function() {
-                      $('a[href*=#]:not([href=#])').click(function() {
-                        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-                          var target = $(this.hash);
-                          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                          if (target.length) {
-                            $('html,body').animate({
-                              scrollTop: target.offset().top
-                            }, 500);
-                            return false;
-                          }
-                        }
-                      });
-                    });
-
-                });
-
-            }(jQuery));
-        </script>
+        <script src="{{asset 'js/image-mover.js'}}"></script>
 
         {{! Each post has the blog logo at the top, with a link back to the home page }}
 
@@ -88,8 +38,11 @@
             <div class="post-meta">
                 <h1 class="post-title">{{{page.title}}}</h1>
                 <div class="cf post-meta-text">
-                    <div class="author-image" style="background-image: url({{theme.author_image}})">Blog Logo</div>
-                    <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{config.author}}</h4> on
+                    <a class="silent-link" href="/about">
+                        <div class="author-image" style="background-image: url({{theme.author_image}})">Blog Logo</div>
+                        <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{config.author}}</h4>
+                    </a>
+                    on
                     <time datetime="{{date page.date format="YYYY-MM-DD"}}">{{date page.date format='DD MMM YYYY'}}</time>
                     {{tags page.tags prefix=", tagged on " separator=", "}}
                 </div>
@@ -100,7 +53,6 @@
         <br>
 
         {{/if}}
-
 
             <section class="post-content">
                 <div class="post-reading">
@@ -130,6 +82,7 @@
             </footer>
 
             <div class="bottom-teaser cf">
+                <a href="/about" class="silent-link">
                 <div class="isLeft">
                     <h5 class="index-headline featured"><span>Written by</span></h5>
                     <section class="author">
@@ -151,6 +104,7 @@
                         </div>
                     </footer>
                 </div>
+                </a>
             </div>
 
     </article>
