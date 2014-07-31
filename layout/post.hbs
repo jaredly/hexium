@@ -20,7 +20,7 @@
             <div class="post-meta">
                 <h1 class="post-title">{{{page.title}}}</h1>
                 <div class="cf post-meta-text">
-                    <div class="author-image" style="background-image: url({{config.theme_config.author_image}})">Blog Logo</div>
+                    <div class="author-image" style="background-image: url({{theme.author_image}})">Blog Logo</div>
                     <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{config.author}}</h4> on
                     <time datetime="{{date page.date format="YYYY-MM-DD"}}">{{date page.date format='DD MMM YYYY'}}</time>
                     {{tags page.tags prefix=", tagged on " separator=", "}}
@@ -88,7 +88,7 @@
             <div class="post-meta">
                 <h1 class="post-title">{{{page.title}}}</h1>
                 <div class="cf post-meta-text">
-                    <div class="author-image" style="background-image: url({{config.theme_config.author_image}})">Blog Logo</div>
+                    <div class="author-image" style="background-image: url({{theme.author_image}})">Blog Logo</div>
                     <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{config.author}}</h4> on
                     <time datetime="{{date page.date format="YYYY-MM-DD"}}">{{date page.date format='DD MMM YYYY'}}</time>
                     {{tags page.tags prefix=", tagged on " separator=", "}}
@@ -133,9 +133,9 @@
                 <div class="isLeft">
                     <h5 class="index-headline featured"><span>Written by</span></h5>
                     <section class="author">
-                        <div class="author-image" style="background-image: url({{config.theme_config.author_image}})">Blog Logo</div>
+                        <div class="author-image" style="background-image: url({{theme.author_image}})">Blog Logo</div>
                         <h4>{{config.author}}</h4>
-                        <p class="bio">{{config.theme_config.bio}}</p>
+                        <p class="bio">{{theme.bio}}</p>
                         <hr>
                         <p class="published">Published <time datetime="{{date page.date format="YYYY-MM-DD"}}">{{date page.date format='DD MMM YYYY'}}</time></p>
                     </section>
@@ -158,7 +158,7 @@
 </main>
 
 <div class="bottom-closer">
-    <div class="background-closer-image" {{#if config.theme_config.cover}}style="background-image: url({{config.theme_config.cover}})"{{/if}}>
+    <div class="background-closer-image" {{#if theme.cover}}style="background-image: url({{theme.cover}})"{{/if}}>
         Image
     </div>
     <div class="inner">
