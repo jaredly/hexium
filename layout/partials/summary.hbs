@@ -1,0 +1,22 @@
+<article class="{{post_class}}" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+    <div class="article-item">
+        <header class="post-header">
+        <h2 class="post-title" itemprop="name">
+            <a href="{{url_for path}}" itemprop="url">{{{title}}}</a>
+            {{#if (isdraft source)}}
+            <em style="color: #ccc">Draft</em>
+            {{/if}}
+        </h2>
+        </header>
+        <section class="post-excerpt" itemprop="description">
+            {{excerpt characters="130"}}
+        </section>
+        <div class="post-meta">
+            <time datetime="{{date date format='YYYY-MM-DD'}}">
+                {{date date format="DD MMM YYYY"}}
+            </time>
+            <span class="post-tags-set">{{tags prefix="on "}}</span>
+        </div>
+    </div>
+</article>
+

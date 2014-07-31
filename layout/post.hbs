@@ -4,111 +4,26 @@
     the {body} of the default.hbs template, which contains our header/footer. }}
 
 <main class="content" role="main">
+    <article class="post">
 
-    <article class="post {{post_class}}">
+        {{> article-header}}
 
-        {{debug page}}
-        {{#if page.articleImage}}
-
-        <div class="article-image">
-            <div class="post-image-image">
-
-                Article Image
-
+        <section class="post-content">
+            <div class="post-reading">
+                <span class="post-reading-time"></span> read
             </div>
-            <div class="post-meta">
-                <h1 class="post-title">{{{page.title}}}</h1>
-                <div class="cf post-meta-text">
-                    <div class="author-image" style="background-image: url({{theme.author_image}})">Blog Logo</div>
-                    <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{config.author}}</h4> on
-                    <time datetime="{{date page.date format="YYYY-MM-DD"}}">{{date page.date format='DD MMM YYYY'}}</time>
-                    {{tags page.tags prefix=", tagged on " separator=", "}}
-                </div>
-                <center><a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a></center>
-            </div>
-        </div>
+            <a name="topofpage"></a>
 
-        <script src="{{asset 'js/image-mover.js'}}"></script>
+            {{{page.content}}}
+        </section>
 
-        {{! Each post has the blog logo at the top, with a link back to the home page }}
+        <footer class="post-footer"> 
+            {{> social-share}}
+        </footer>
 
-        {{else}}
-
-        <div class="noarticleimage">
-            <div class="post-meta">
-                <h1 class="post-title">{{{page.title}}}</h1>
-                <div class="cf post-meta-text">
-                    <a class="silent-link" href="/about">
-                        <div class="author-image" style="background-image: url({{theme.author_image}})">Blog Logo</div>
-                        <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{config.author}}</h4>
-                    </a>
-                    on
-                    <time datetime="{{date page.date format="YYYY-MM-DD"}}">{{date page.date format='DD MMM YYYY'}}</time>
-                    {{tags page.tags prefix=", tagged on " separator=", "}}
-                </div>
-            </div>
-        </div>
-        <br>
-        <br>
-        <br>
-
-        {{/if}}
-
-            <section class="post-content">
-                <div class="post-reading">
-                    <span class="post-reading-time"></span> read
-                </div>
-                <a name="topofpage"></a>
-                {{{page.content}}}
-            </section>
-
-            <footer class="post-footer">
-
-                <section class="share">
-                    <a class="icon-twitter" href="http://twitter.com/share?text={{encode page.title}}&url={{url absolute="true"}}"
-                        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                        <span class="hidden">Twitter</span>
-                    </a>
-                    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
-                        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                        <span class="hidden">Facebook</span>
-                    </a>
-                    <a class="icon-google-plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
-                       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                        <span class="hidden">Google+</span>
-                    </a>
-                </section>
-
-            </footer>
-
-            <div class="bottom-teaser cf">
-                <a href="/about" class="silent-link">
-                <div class="isLeft">
-                    <h5 class="index-headline featured"><span>Written by</span></h5>
-                    <section class="author">
-                        <div class="author-image" style="background-image: url({{theme.author_image}})">Blog Logo</div>
-                        <h4>{{config.author}}</h4>
-                        <p class="bio">{{theme.bio}}</p>
-                        <hr>
-                        <p class="published">Published <time datetime="{{date page.date format="YYYY-MM-DD"}}">{{date page.date format='DD MMM YYYY'}}</time></p>
-                    </section>
-                </div>
-                <div class="isRight">
-                    <h5 class="index-headline featured"><span>Supported by</span></h5>
-                    <footer class="site-footer">
-                        <section class="poweredby">Proudly published with <a class="icon-hexo" href="http://hexo.io"> Hexo</a></section>
-                        <a class="subscribe" href="{{config.root}}/rss/"><span class="tooltip">You should subscribe to my RSS feed.</span></a>
-                        <div class="inner">
-                             <section class="copyright">All content copyright <a href="{{config.root}}/">{{config.title}}</a> &copy; {{date format="YYYY"}}<br>All rights reserved.</section>
-
-                        </div>
-                    </footer>
-                </div>
-                </a>
-            </div>
+        {{> written-powered}}
 
     </article>
-
 </main>
 
 <div class="bottom-closer">

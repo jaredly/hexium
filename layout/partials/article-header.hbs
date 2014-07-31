@@ -1,0 +1,45 @@
+{{#if page.articleImage}}
+
+<div class="article-image">
+    <div class="post-image-image" style="background-image: url({{asset page.articleImage}})">
+
+        Article Image
+
+    </div>
+    <div class="post-meta">
+        <h1 class="post-title">{{{page.title}}}</h1>
+        <div class="cf post-meta-text">
+            <div class="author-image" style="background-image: url({{theme.author_image}})">Blog Logo</div>
+            <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{config.author}}</h4> on
+            <time datetime="{{date page.date format="YYYY-MM-DD"}}">{{date page.date format='DD MMM YYYY'}}</time>
+            {{tags page.tags prefix=", tagged on " separator=", "}}
+        </div>
+        <center><a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a></center>
+    </div>
+</div>
+
+<script src="{{asset 'js/image-mover.js'}}"></script>
+
+{{! Each post has the blog logo at the top, with a link back to the home page }}
+
+{{else}}
+
+<div class="noarticleimage">
+    <div class="post-meta">
+        <h1 class="post-title">{{{page.title}}}</h1>
+        <div class="cf post-meta-text">
+            <a class="silent-link" href="/about">
+                <div class="author-image" style="background-image: url({{theme.author_image}})">Blog Logo</div>
+                <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{config.author}}</h4>
+            </a>
+            on
+            <time datetime="{{date page.date format="YYYY-MM-DD"}}">{{date page.date format='DD MMM YYYY'}}</time>
+            {{tags page.tags prefix=", tagged on " separator=", "}}
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+{{/if}}
+

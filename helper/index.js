@@ -11,7 +11,23 @@ module.exports = {
     return moment(date).format(options.hash.format)
   },
 
+  isdraft: function (source) {
+    return source.indexOf('_drafts/') === 0
+  },
+
   asset: function (name) {
+    if (name.slice(0, 2) === '//' || ['http:/', 'https:'].indexOf(name.slice(0, 6)) !== -1) {
+      return name
+    }
+    if (name[0] === '/') name = name.slice(1)
+    return hexo.config.root + name
+  },
+
+  abs: function (name) {
+    if (name.slice(0, 2) === '//' || ['http:/', 'https:'].indexOf(name.slice(0, 6)) !== -1) {
+      return name
+    }
+    if (name[0] === '/') name = name.slice(1)
     return hexo.config.root + name
   },
 

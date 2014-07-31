@@ -7,59 +7,14 @@
 {{! The big featured header on the homepage, with the site logo and description }}
 
 
-<div class="teaserimage">
-    <div class="teaserimage-image" {{#if theme.cover}}style="background-image: url({{theme.cover}})"{{/if}}>
-        Teaser Image
-    </div>
-</div>
+{{> teaser}}
 
 <header class="blog-header">
-    {{#if theme.main_image}}<a class="blog-logo" href="{{config.root}}" style="background-image: url({{theme.main_image}})">{{config.title}}</a>{{/if}}
-    <h1 class="blog-title">{{config.title}}</h1>
-    <h2 class="blog-description">{{config.subtitle}}</h2>
-    <div class="custom-links">
-    {{#if theme.twitter}}
-      <a href="https://twitter.com/{{theme.twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>&nbsp;&nbsp;
-    {{/if}}
-    {{#if theme.gplus}}
-      <a href="https://plus.google.com/{{theme.gplus}}/posts" target="_blank"><i class="fa fa-google-plus"></i></a>&nbsp;&nbsp;
-    {{/if}}
-    {{#if theme.github}}
-      <a href="https://github.com/{{theme.github}}/" target="_blank"><i class="fa fa-github"></i></a>&nbsp;&nbsp;·&nbsp;&nbsp;
-    {{/if}}
-    <a href="/about/">About me</a>
-    &nbsp;&nbsp;·&nbsp;&nbsp;
-    <a href="/projects/">Projects</a>
-    <!--
-    <a href="/veroffentlichungen/">Veröffentlichungen</a>
-    &nbsp;&nbsp;·&nbsp;&nbsp;
-    <a href="/alles-ausser-sprachkritik/">Sprachkritik</a>
-    -->
-    </div>
+    {{> blog-header}}
+    {{> nav}}
 </header>
 
-<script>
-    (function ($) {
-        "use strict";
-
-        $(document).ready(function(){
-
-            var $window = $(window),
-                $image = $('.teaserimage-image');
-            $window.on('scroll', function() {
-                var top = $window.scrollTop();
-
-                if (top < 0 || top > 1500) { return; }
-                $image
-                    .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
-                    .css('opacity', 1-Math.max(top/700, 0));
-            });
-            $window.trigger('scroll');
-
-        });
-
-    }(jQuery));
-</script>
+<script src="{{asset "js/teaser.js"}}"></script>
 
 {{! The main content area on the homepage }}
 <main class="content" role="main">
@@ -69,17 +24,7 @@
     <div class="container featured">
         {{#foreach page.posts}}
             {{#if featured}}
-                <article class="{{post_class}}" itemscope itemtype="http://schema.org/BlogPosting" role="article">
-                    <div class="article-item">
-                        <header class="post-header">
-                            <h2 class="post-title" itemprop="name"><a href="{{url}}" itemprop="url">{{{title}}}</a></h2>
-                        </header>
-                        <section class="post-excerpt" itemprop="description">
-                            <p>{{excerpt characters="130"}}&hellip;</p>
-                        </section>
-                        <div class="post-meta"><time datetime="{{date date format='YYYY-MM-DD'}}">{{date date format="DD MMM YYYY"}}</time> <span class="post-tags-set">{{tags prefix="on "}}</span></div>
-                    </div>
-                </article>
+              {{> summary}}
             {{/if}}
         {{/foreach}}
     </div>
@@ -88,33 +33,15 @@
 
     <div class="cf frame">
     {{#foreach page.posts}}
-        {{#if featured}}
-        {{else}}
-            <article class="" itemscope itemtype="http://schema.org/BlogPosting" role="article">
-                <div class="article-item">
-                    <header class="post-header">
-                        <h2 class="post-title" itemprop="name"><a href="{{path}}" itemprop="url">{{{title}}}</a></h2>
-                    </header>
-                    <section class="post-excerpt" itemprop="description">
-                        <p>{{excerpt characters="130"}}&hellip;</p>
-                    </section>
-                    <div class="post-meta"><time datetime="{{date date format='YYYY-MM-DD'}}">{{date date format="DD MMM YYYY"}}</time> <span class="post-tags-set">{{tags prefix="on "}}</span></div>
-                </div>
-            </article>
-        {{/if}}
+        {{#unless featured}}
+            {{> summary}}
+        {{/unless}}
     {{/foreach}}
     </div>
-
 
     {{!! After all the posts, we have the previous/next pagination links }}
     {{pagination}}
 
 </main>
 
-<footer class="site-footer">
-    <a class="subscribe icon-feed" href="{{config.root}}/rss/"><span class="tooltip"> Subscribe!</span></a>
-    <div class="inner">
-         <section class="copyright">All content copyright <a href="{{config.root}}/">{{config.title}}</a> &copy; {{date format="YYYY"}} &bull; All rights reserved.</section>
-         <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://ghost.org"> Ghost</a></section>
-    </div>
-</footer>
+{{> footer}}

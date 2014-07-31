@@ -7,41 +7,13 @@
 
 {{! The big featured header on the homepage, with the site logo and description }}
 
-
-<div class="teaserimage">
-    <div class="teaserimage-image" {{#if config.cover}}style="background-image: url({{config.cover}})"{{/if}}>
-        Teaser Image
-    </div>
-</div>
+{{> teaser}}
 
 <header class="blog-header">
-    {{#if config.main_image}}<a class="blog-logo" href="{{config.root}}" style="background-image: url({{config.main_image}})">{{config.title}}</a>{{/if}}
-    <h1 class="blog-title">{{config.title}}</h1>
-    <h2 class="blog-description">{{config.subtitle}}</h2>
+  {{> blog-header}}
 </header>
-
-<script>
-    (function ($) {
-        "use strict";
-
-        $(document).ready(function(){
-
-            var $window = $(window),
-                $image = $('.teaserimage-image');
-            $window.on('scroll', function() {
-                var top = $window.scrollTop();
-
-                if (top < 0 || top > 1500) { return; }
-                $image
-                    .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
-                    .css('opacity', 1-Math.max(top/700, 0));
-            });
-            $window.trigger('scroll');
-
-        });
-
-    }(jQuery));
-</script>
+ 
+<script src={{asset "js/teaser.js"}}> </script>
 
 {{! The main content area on the homepage }}
 <main class="content" role="main">
@@ -51,19 +23,8 @@
     <h5 class="index-headline normal"><span>Article list for {{page.tag}}</span></h5>
 
     <div class="cf frame">
-    {{debug}}
     {{#foreach page.posts}}
-        <article class="{{post_class}}" itemscope itemtype="http://schema.org/BlogPosting" role="article">
-            <div class="article-item">
-                <header class="post-header">
-                    <h2 class="post-title" itemprop="name"><a href="{{url}}" itemprop="url">{{{title}}}</a></h2>
-                </header>
-                <section class="post-excerpt" itemprop="description">
-                    <p>{{excerpt characters="150"}}&hellip;</p>
-                </section>
-                <div class="post-meta"><time datetime="{{date date format='YYYY-MM-DD'}}">{{date date format="DD MMM YYYY"}}</time> {{tags prefix="on "}}</div>
-            </div>
-        </article>
+      {{> summary}}
     {{/foreach}}
     </div>
 
@@ -73,18 +34,4 @@
 
 </main>
 
-<footer class="site-footer">
-    <a class="subscribe icon-feed" href="{{config.root}}/rss/"><span class="tooltip">Subscribe!</span></a>
-    <div class="inner">
-         <section class="copyright">All content copyright <a href="{{config.root}}/">{{config.title}}</a> &copy; {{date format="YYYY"}} &bull; All rights reserved.</section>
-         <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://ghost.org">Ghost</a></section>
-    </div>
-</footer>
-
-
-
-
-
-
-
-
+{{> footer}}

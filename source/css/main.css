@@ -658,3 +658,11 @@ body {
 .silent-link {
     color: inherit;
 }
+
+.bottom-closer {
+    background-color: black;
+}
+
+.bottom-closer .background-closer-image {
+    opacity: .5;
+}
