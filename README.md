@@ -1,8 +1,6 @@
 # Hexium
 
-**The Medium-like theme for [Hexo](https://hexo.io)**. Reduced to the core design of Medium (without the cluttered
-stuff, like the sidebar) to bring you a similar user experience
-while giving you the freedom to host it on your own servers and on your own terms. Fork of [readium](https://github.com/starburst1977/readium).
+**The Medium-like theme for [Hexo](https://hexo.io)**. It is a fork of the [Readium](https://github.com/starburst1977/readium) for [Ghost](http://ghost.org).
 
 ![Hexium 2.0](http://cl.ly/VBX3/readium2.jpg)
 
