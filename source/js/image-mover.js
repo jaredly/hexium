@@ -3,16 +3,6 @@
 
   $(document).ready(function(){
 
-    $('.post-content').each(function() {
-      var $this = $(this),
-      img = $this.find('img:first'),
-      url = img.attr('src');
-
-      $(".post-image-image").css('background-image', 'url('+url+')');
-
-      img.remove();
-    });
-
     var $window = $(window),
     $image = $('.post-image-image');
     $window.on('scroll', function() {
