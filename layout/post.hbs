@@ -8,10 +8,10 @@
 
         {{> article-header}}
 
-        <section class="post-content">
             <div class="post-reading">
                 <span class="post-reading-time"></span> read
             </div>
+        <section class="post-content">
             <a name="topofpage"></a>
 
             {{{page.content}}}
@@ -20,6 +20,13 @@
         <footer class="post-footer"> 
             {{> social-share}}
         </footer>
+
+	<div
+		data-firebase="now-commenting"
+		data-auth="github google twitter facebook"
+		data-slug="{{ page.slug }}"
+		data-inline=".post-content"
+		id="commented-main"></div>
 
         {{> written-powered}}
 
