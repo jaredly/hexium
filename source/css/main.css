@@ -671,3 +671,35 @@ body {
 .bottom-closer .background-closer-image {
     opacity: .5;
 }
+
+.post .post-content figure.image {
+    text-align: center;
+}
+.post .post-content figure.image img {
+    box-shadow: 0 1px 5px #aaa;
+}
+.post .post-content figure.highlight {
+  line-height: 21px;
+  font-size: 14px;
+}
+
+.content-header-link:after {
+  content: '\1f517';
+  position: absolute;
+  left: -40px;
+  top: 27px;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity .2s ease;
+  font-size: 20px;
+  color: #555;
+}
+
+.content-header {
+  position: relative;
+}
+
+.content-header:hover .content-header-link:after {
+  opacity: 1;
+}
+
