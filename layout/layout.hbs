@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     {{! Page Meta }}
-    <title>{{meta_title}}</title>
+    <title>{{get_title page}}</title>
     <meta name="description" content="{{meta_description}}" />
 
     <meta name="HandheldFriendly" content="True" />
@@ -18,14 +18,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="{{meta_title}}">
+    <meta name="twitter:title" content="{{get_title page}}">
     <meta name="twitter:description" content="{{meta_description}}">
     <meta name="twitter:site" content="http://mark-read.info">
     <meta name="twitter:creator" content="@MarkReadM">
     <meta name="google-site-verification" content="">
     <meta property="fb:admins" content="">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="{{meta_title}}">
+    <meta property="og:title" content="{{get_title page}}">
     <meta property="og:description" content="{{meta_description}}">
 
     <link rel="shortcut icon" href="{{asset theme.favicon}}">

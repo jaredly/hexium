@@ -47,6 +47,16 @@ module.exports = function(hexo) {
       return this.path
     },
 
+    get_title: function (page) {
+      if (page.title) {
+        return page.title + ' | Jared Forsyth.com'
+      }
+      if (page.tag) {
+        return page.tag + ' | Jared Forsyth.com'
+      }
+      return 'Jared Forsyth.com'
+    },
+
     tags: function (tags, options) {
       if (arguments.length === 1) {
         options = tags
