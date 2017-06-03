@@ -57,6 +57,20 @@ module.exports = function(hexo) {
       return 'Jared Forsyth.com'
     },
 
+    get_description: function (page) {
+      if (page.description) {
+        return page.description
+      }
+      return 'A blog about web development, programming languages, react, etc.'
+    },
+
+    get_image: function (page) {
+      if (page.image) {
+        return page.image
+      }
+      return 'https://jaredforsyth.com/images/logo/JF_black_128.png'
+    },
+
     tags: function (tags, options) {
       if (arguments.length === 1) {
         options = tags
@@ -91,7 +105,7 @@ module.exports = function(hexo) {
       console.log("Current Context");
       console.log("====================");
       console.log(this);
-    
+
       if (optionalValue) {
         if ('function' === typeof optionalValue) {
           optionalValue = optionalValue()
