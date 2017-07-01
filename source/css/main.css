@@ -715,3 +715,25 @@ body {
   opacity: 1;
 }
 
+.post .post-content
+figure.highlight {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #fdf6e3;
+    color: #657b83;
+}
+
+.post .post-content figure.highlight td.gutter {
+    border-right: 1px solid #aaa;
+    padding-right: 5px;
+}
+
+.post .post-content figure.highlight td.code {
+    padding-left: 10px;
+}
+
+.post .post-content h3 {
+    font-size: 28px;
+    font-weight: 400;
+}
