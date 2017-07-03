@@ -729,6 +729,10 @@ figure.highlight {
     padding-right: 5px;
 }
 
+.post .post-content code {
+    font-size: .8em;
+}
+
 .post .post-content figure.highlight td.code {
     padding-left: 10px;
 }
