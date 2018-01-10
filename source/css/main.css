@@ -741,3 +741,7 @@ figure.highlight {
     font-size: 28px;
     font-weight: 400;
 }
+
+.content article .post-excerpt img {
+  max-width: 100%;
+}
